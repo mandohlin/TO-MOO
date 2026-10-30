@@ -118,7 +118,7 @@ function Confetti({ origin, onDone }: { origin: { x: number; y: number }; onDone
 let mooBuf: Promise<AudioBuffer> | null = null
 // Laddar och avkodar ljudfilen i förväg så den spelas direkt när pausen är slut
 function loadMoo(ctx: AudioContext) {
-  mooBuf ??= fetch('/assets/moo.mp3').then((r) => r.arrayBuffer()).then((b) => ctx.decodeAudioData(b))
+  mooBuf ??= fetch(import.meta.env.BASE_URL + 'assets/moo.mp3').then((r) => r.arrayBuffer()).then((b) => ctx.decodeAudioData(b))
   mooBuf.catch(() => { mooBuf = null })
   return mooBuf
 }
@@ -930,10 +930,10 @@ export default function App() {
         <div className="absolute inset-x-0 top-0 transition-transform duration-500 ease-[cubic-bezier(.2,.8,.2,1)]" style={{ height: 'var(--hfull)', transform: quickId ? `translateY(calc(${HEADER_MIN}px + var(--hd) - var(--hfull)))` : 'translateY(var(--hd))' }}>
         <div className="absolute inset-x-0 bottom-0 bg-[#a8ab5a]" style={{ top: '38.49cqw' }} />
         <div className="pointer-events-none absolute" style={{ left: '-5.79cqw', top: '21.33cqw', width: '110.15cqw' }}>
-          <img src="/assets/grass.png" alt="" className="block w-full" />
-          <img src="/assets/cow-base-v4.png" alt="" className={`absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-0' : 'opacity-100'}`} />
-          <img src="/assets/cow.png" alt="" aria-hidden className={`ear absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-0' : 'opacity-100'}`} style={{ clipPath: 'polygon(53.9% 22.7%,54.6% 18.4%,56.2% 15.3%,58.2% 14.2%,58.2% 22.4%,56.4% 24.4%,54.8% 25.5%)' }} />
-          <img src="/assets/cow.png" alt="" aria-hidden className={`ear2 absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-0' : 'opacity-100'}`} style={{ clipPath: 'polygon(66.2% 22.4%,66.7% 18.7%,67.7% 18.7%,68.8% 21.5%,69.9% 24.9%,70.7% 27.8%,70.5% 30.0%,69.3% 30.6%,68.1% 28.6%,66.8% 25.8%,66.2% 24.1%)' }} />
+          <img src={import.meta.env.BASE_URL + 'assets/grass.png'} alt="" className="block w-full" />
+          <img src={import.meta.env.BASE_URL + 'assets/cow-base-v4.png'} alt="" className={`absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-0' : 'opacity-100'}`} />
+          <img src={import.meta.env.BASE_URL + 'assets/cow.png'} alt="" aria-hidden className={`ear absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-0' : 'opacity-100'}`} style={{ clipPath: 'polygon(53.9% 22.7%,54.6% 18.4%,56.2% 15.3%,58.2% 14.2%,58.2% 22.4%,56.4% 24.4%,54.8% 25.5%)' }} />
+          <img src={import.meta.env.BASE_URL + 'assets/cow.png'} alt="" aria-hidden className={`ear2 absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-0' : 'opacity-100'}`} style={{ clipPath: 'polygon(66.2% 22.4%,66.7% 18.7%,67.7% 18.7%,68.8% 21.5%,69.9% 24.9%,70.7% 27.8%,70.5% 30.0%,69.3% 30.6%,68.1% 28.6%,66.8% 25.8%,66.2% 24.1%)' }} />
           {!pauseMsg && (
             <svg viewBox="0 0 1200 353" className="blink absolute inset-0 block w-full" aria-hidden>
               {[[703.2, 85.8], [763.8, 93.8]].map(([x, y]) => (
@@ -944,9 +944,9 @@ export default function App() {
               ))}
             </svg>
           )}
-          <img src="/assets/cow-eating-v5.png" alt="" className={`absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-100' : 'opacity-0'}`} />
-          <img src="/assets/cow-mouth-v2.png" alt="" aria-hidden className={`chew absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-100' : 'opacity-0'}`} />
-          <img src="/assets/cow.png" alt="" aria-hidden className="tail absolute inset-0 block w-full" style={{ clipPath: 'polygon(87.42% 26.35%,94.58% 26.35%,94.58% 75.07%,88.17% 75.07%,88.17% 31.44%,87.42% 31.44%)' }} />
+          <img src={import.meta.env.BASE_URL + 'assets/cow-eating-v5.png'} alt="" className={`absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-100' : 'opacity-0'}`} />
+          <img src={import.meta.env.BASE_URL + 'assets/cow-mouth-v2.png'} alt="" aria-hidden className={`chew absolute inset-0 block w-full transition-opacity duration-500 ${pauseMsg ? 'opacity-100' : 'opacity-0'}`} />
+          <img src={import.meta.env.BASE_URL + 'assets/cow.png'} alt="" aria-hidden className="tail absolute inset-0 block w-full" style={{ clipPath: 'polygon(87.42% 26.35%,94.58% 26.35%,94.58% 75.07%,88.17% 75.07%,88.17% 31.44%,87.42% 31.44%)' }} />
         </div>
         {!pauseMsg ? (
           <div key="bubble-default" className="a-msg absolute inset-0">
