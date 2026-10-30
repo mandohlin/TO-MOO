@@ -1,0 +1,10 @@
+{
+  "description": "En mobilvänlig att göra-app för att skapa, redigera och bocka av uppgiftslistor, med smart hantering av ofärdiga uppgifter mellan listor.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
